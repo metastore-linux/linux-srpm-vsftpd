@@ -1,74 +1,74 @@
 %global _generatorsdir %{_prefix}/lib/systemd/system-generators
 
-Name:               vsftpd
-Version:            3.0.3
-Release:            12%{?dist}
-Summary:            Very Secure Ftp Daemon
-Group:              System Environment/Daemons
+Name:                   vsftpd
+Version:                3.0.3
+Release:                12%{?dist}
+Summary:                Very Secure Ftp Daemon
+Group:                  System Environment/Daemons
 # OpenSSL link exception
-License:            GPLv2 with exceptions
-URL:                https://security.appspot.com/vsftpd.html
+License:                GPLv2 with exceptions
+URL:                    https://security.appspot.com/vsftpd.html
 
-Source0:            https://security.appspot.com/downloads/%{name}-%{version}.tar.gz
-Source1:            vsftpd.xinetd
-Source2:            vsftpd.pam
-Source3:            vsftpd.ftpusers
-Source4:            vsftpd.user_list
-Source6:            vsftpd_conf_migrate.sh
-Source7:            vsftpd.service
-Source8:            vsftpd@.service
-Source9:            vsftpd.target
-Source10:           vsftpd-generator
+Source0:                https://security.appspot.com/downloads/%{name}-%{version}.tar.gz
+Source1:                vsftpd.xinetd
+Source2:                vsftpd.pam
+Source3:                vsftpd.ftpusers
+Source4:                vsftpd.user_list
+Source6:                vsftpd_conf_migrate.sh
+Source7:                vsftpd.service
+Source8:                vsftpd@.service
+Source9:                vsftpd.target
+Source10:               vsftpd-generator
 # Signature
-Source900:          https://security.appspot.com/downloads/%{name}-%{version}.tar.gz.asc
+Source900:              https://security.appspot.com/downloads/%{name}-%{version}.tar.gz.asc
 
-BuildRequires:      pam-devel
-BuildRequires:      libcap-devel
-BuildRequires:      openssl-devel
-BuildRequires:      systemd
-BuildRequires:      tcp_wrappers-devel
-BuildRequires:      git
-Requires:           logrotate
+BuildRequires:          pam-devel
+BuildRequires:          libcap-devel
+BuildRequires:          openssl-devel
+BuildRequires:          systemd
+BuildRequires:          tcp_wrappers-devel
+BuildRequires:          git
+Requires:               logrotate
 
-Patch1:             0001-Don-t-use-the-provided-script-to-locate-libraries.patch
-Patch2:             0002-Enable-build-with-SSL.patch
-Patch3:             0003-Enable-build-with-TCP-Wrapper.patch
-Patch4:             0004-Use-etc-vsftpd-dir-for-config-files-instead-of-etc.patch
-Patch5:             0005-Use-hostname-when-calling-PAM-authentication-module.patch
-Patch6:             0006-Close-stdin-out-err-before-listening-for-incoming-co.patch
-Patch7:             0007-Make-filename-filters-smarter.patch
-Patch8:             0008-Write-denied-logins-into-the-log.patch
-Patch9:             0009-Trim-whitespaces-when-reading-configuration.patch
-Patch10:            0010-Improve-daemonizing.patch
-Patch11:            0011-Fix-listing-with-more-than-one-star.patch
-Patch12:            0012-Replace-syscall-__NR_clone-.-with-clone.patch
-Patch13:            0013-Extend-man-pages-with-systemd-info.patch
-Patch14:            0014-Add-support-for-square-brackets-in-ls.patch
-Patch15:            0015-Listen-on-IPv6-by-default.patch
-Patch16:            0016-Increase-VSFTP_AS_LIMIT-from-200UL-to-400UL.patch
-Patch17:            0017-Fix-an-issue-with-timestamps-during-DST.patch
-Patch18:            0018-Change-the-default-log-file-in-configuration.patch
-Patch19:            0019-Introduce-reverse_lookup_enable-option.patch
-Patch20:            0020-Use-unsigned-int-for-uid-and-gid-representation.patch
-Patch21:            0021-Introduce-support-for-DHE-based-cipher-suites.patch
-Patch22:            0022-Introduce-support-for-EDDHE-based-cipher-suites.patch
-Patch23:            0023-Add-documentation-for-isolate_-options.-Correct-defa.patch
-Patch24:            0024-Introduce-new-return-value-450.patch
-Patch25:            0025-Improve-local_max_rate-option.patch
-Patch26:            0026-Prevent-hanging-in-SIGCHLD-handler.patch
-Patch27:            0027-Delete-files-when-upload-fails.patch
-Patch28:            0028-Fix-man-page-rendering.patch
-Patch29:            0029-Fix-segfault-in-config-file-parser.patch
-Patch30:            0030-Fix-logging-into-syslog-when-enabled-in-config.patch
-Patch31:            0031-Fix-question-mark-wildcard-withing-a-file-name.patch
-Patch32:            0032-Propagate-errors-from-nfs-with-quota-to-client.patch
-Patch33:            0033-Introduce-TLSv1.1-and-TLSv1.2-options.patch
-Patch34:            0034-Turn-off-seccomp-sandbox-because-it-is-too-strict.patch
-Patch35:            0035-Modify-DH-enablement-patch-to-build-with-OpenSSL-1.1.patch
-Patch36:            0036-Redefine-VSFTP_COMMAND_FD-to-1.patch
-Patch37:            0037-Document-the-relationship-of-text_userdb_names-and-c.patch
-Patch38:            0038-Document-allow_writeable_chroot-in-the-man-page.patch
-Patch39:            0039-Improve-documentation-of-ASCII-mode-in-the-man-page.patch
+Patch1:                 0001-Don-t-use-the-provided-script-to-locate-libraries.patch
+Patch2:                 0002-Enable-build-with-SSL.patch
+Patch3:                 0003-Enable-build-with-TCP-Wrapper.patch
+Patch4:                 0004-Use-etc-vsftpd-dir-for-config-files-instead-of-etc.patch
+Patch5:                 0005-Use-hostname-when-calling-PAM-authentication-module.patch
+Patch6:                 0006-Close-stdin-out-err-before-listening-for-incoming-co.patch
+Patch7:                 0007-Make-filename-filters-smarter.patch
+Patch8:                 0008-Write-denied-logins-into-the-log.patch
+Patch9:                 0009-Trim-whitespaces-when-reading-configuration.patch
+Patch10:                0010-Improve-daemonizing.patch
+Patch11:                0011-Fix-listing-with-more-than-one-star.patch
+Patch12:                0012-Replace-syscall-__NR_clone-.-with-clone.patch
+Patch13:                0013-Extend-man-pages-with-systemd-info.patch
+Patch14:                0014-Add-support-for-square-brackets-in-ls.patch
+Patch15:                0015-Listen-on-IPv6-by-default.patch
+Patch16:                0016-Increase-VSFTP_AS_LIMIT-from-200UL-to-400UL.patch
+Patch17:                0017-Fix-an-issue-with-timestamps-during-DST.patch
+Patch18:                0018-Change-the-default-log-file-in-configuration.patch
+Patch19:                0019-Introduce-reverse_lookup_enable-option.patch
+Patch20:                0020-Use-unsigned-int-for-uid-and-gid-representation.patch
+Patch21:                0021-Introduce-support-for-DHE-based-cipher-suites.patch
+Patch22:                0022-Introduce-support-for-EDDHE-based-cipher-suites.patch
+Patch23:                0023-Add-documentation-for-isolate_-options.-Correct-defa.patch
+Patch24:                0024-Introduce-new-return-value-450.patch
+Patch25:                0025-Improve-local_max_rate-option.patch
+Patch26:                0026-Prevent-hanging-in-SIGCHLD-handler.patch
+Patch27:                0027-Delete-files-when-upload-fails.patch
+Patch28:                0028-Fix-man-page-rendering.patch
+Patch29:                0029-Fix-segfault-in-config-file-parser.patch
+Patch30:                0030-Fix-logging-into-syslog-when-enabled-in-config.patch
+Patch31:                0031-Fix-question-mark-wildcard-withing-a-file-name.patch
+Patch32:                0032-Propagate-errors-from-nfs-with-quota-to-client.patch
+Patch33:                0033-Introduce-TLSv1.1-and-TLSv1.2-options.patch
+Patch34:                0034-Turn-off-seccomp-sandbox-because-it-is-too-strict.patch
+Patch35:                0035-Modify-DH-enablement-patch-to-build-with-OpenSSL-1.1.patch
+Patch36:                0036-Redefine-VSFTP_COMMAND_FD-to-1.patch
+Patch37:                0037-Document-the-relationship-of-text_userdb_names-and-c.patch
+Patch38:                0038-Document-allow_writeable_chroot-in-the-man-page.patch
+Patch39:                0039-Improve-documentation-of-ASCII-mode-in-the-man-page.patch
 
 %description
 vsftpd is a Very Secure FTP daemon. It was written completely from
@@ -110,7 +110,7 @@ install -m 644 %{SOURCE7} $RPM_BUILD_ROOT%{_unitdir}
 install -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{_unitdir}
 install -m 644 %{SOURCE9} $RPM_BUILD_ROOT%{_unitdir}
 install -m 755 %{SOURCE10} $RPM_BUILD_ROOT%{_generatorsdir}
-                            
+
 mkdir -p $RPM_BUILD_ROOT/%{_var}/ftp/pub
 
 %post
@@ -121,7 +121,7 @@ mkdir -p $RPM_BUILD_ROOT/%{_var}/ftp/pub
 %systemd_preun vsftpd.target
 
 %postun
-%systemd_postun_with_restart vsftpd.service 
+%systemd_postun_with_restart vsftpd.service
 
 %files
 %defattr(-,root,root,-)
@@ -185,9 +185,9 @@ mkdir -p $RPM_BUILD_ROOT/%{_var}/ftp/pub
 - Applied patches:
 - Readd seccomp disabled by default
 - vsftpd local_max_rate option doesn't work as expected
-- The vsftpd hangs in a SIGCHLD handler when the pam_exec.so is used in pam.d 
+- The vsftpd hangs in a SIGCHLD handler when the pam_exec.so is used in pam.d
 - configuration
-- The vsftpd doesn't remove failed upload when the delete_failed_uploads is 
+- The vsftpd doesn't remove failed upload when the delete_failed_uploads is
 - enabled and the network cable is unplagged
 - man pages bug
 - vsftpd segfaults in vsf_sysutil_strndup
@@ -467,7 +467,7 @@ mkdir -p $RPM_BUILD_ROOT/%{_var}/ftp/pub
 - Fix pasv dot after pasv response (RFC 959 page 40)
 
 * Wed Apr 04 2007 Maros Barabas <mbarabas@redhat.com> - 2.0.5-16
-- Merge review: - fix using %%{_var}, %%{_sbindir} and 
+- Merge review: - fix using %%{_var}, %%{_sbindir} and
                   %%{_sysconfigdir} macros for files and install
                 - fix BuildRoot
                 - dropped usermod, openssl & pam requirement
@@ -476,12 +476,12 @@ mkdir -p $RPM_BUILD_ROOT/%{_var}/ftp/pub
 - fix BuildPrereq
 
 * Tue Jan 30 2007 Maros Barabas <mbarabas@redhat.com> - 2.0.5-14
-- remove file upload permission problem 
+- remove file upload permission problem
 - change name of patch vsfptd-2.0.3-user_config
 - Resolves #190193
 
 * Fri Jan 19 2007 Maros Barabas <mbarabas@redhat.com> - 2.0.5-13
-- add lost patch: don't die when no user config file is present 
+- add lost patch: don't die when no user config file is present
 - Resolves #166986
 
 * Thu Jan 18 2007 Radek Vokal <rvokal@redhat.com> - 2.0.5-12
@@ -495,7 +495,7 @@ mkdir -p $RPM_BUILD_ROOT/%{_var}/ftp/pub
 * Thu Dec 14 2006 Maros Barabas <mbarabas@redhat.com> - 2.0.5-10
 - correct man (5) pages
 - Resolves: #216765
-- correct calling function stat 
+- correct calling function stat
 - Resolves: bz200763
 
 * Mon Dec 04 2006 Maros Barabas <mbarabas@redhat.com> - 2.0.5-9
@@ -578,7 +578,7 @@ mkdir -p $RPM_BUILD_ROOT/%{_var}/ftp/pub
 - timezone fix, patch from suse.de (#158779)
 
 * Wed Mar 23 2005 Radek Vokal <rvokal@redhat.com> 2.0.3-1
-- new release, fixes #106416 and #134541 
+- new release, fixes #106416 and #134541
 
 * Mon Mar 14 2005 Radek Vokal <rvokal@redhat.com> 2.0.3-pre2
 - prerelease, fixes IPv6 issues
@@ -623,7 +623,7 @@ mkdir -p $RPM_BUILD_ROOT/%{_var}/ftp/pub
 - rebuilt
 
 * Wed May 19 2004 Bill Nottingham <notting@redhat.com> 1.2.1-6
-- fix the logrotate config (#116253) 
+- fix the logrotate config (#116253)
 
 * Mon May  3 2004 Bill Nottingham <notting@redhat.com> 1.2.1-5
 - fix all references to vsftpd.conf to be /etc/vsftpd/vsftpd.conf,
@@ -685,7 +685,7 @@ mkdir -p $RPM_BUILD_ROOT/%{_var}/ftp/pub
 - update to 1.1.3
 - run standalone, don't run by default
 - fix reqs
- 
+
 * Fri Nov 22 2002 Joe Orton <jorton@redhat.com> 1.1.0-3
 - fix use with xinetd-ipv6; add flags=IPv4 in xinetd file (#78410)
 
@@ -697,7 +697,7 @@ mkdir -p $RPM_BUILD_ROOT/%{_var}/ftp/pub
 - -D_FILE_OFFSET_BITS=64
 - smp make
 - remove forced optflags=-g for lack of supporting documentation
- 
+
 * Fri Jun 21 2002 Tim Powers <timp@redhat.com>
 - automated rebuild
 
